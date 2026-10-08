@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="fetcher"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function onYouTubeIframeAPIReady() {
+      const player = new YT.Player('fetcher', {
+        playerVars: { controls: 0, autoplay: 0, origin: window.location.origin },
+        events: {
+          onReady: (e) => {
+            console.log("Ready, cueing playlist!");
+            player.cuePlaylist({listType: 'playlist', list: 'PLWjSaV1b3y4swriysy_FsqTD1Vb2CPdlK'});
+            
+            setInterval(() => {
+              const ids = player.getPlaylist();
+              if (ids && ids.length > 0) {
+                console.log("SUCCESS! IDs:", ids.length);
+              }
+            }, 500);
+          },
+          onError: (e) => console.log("Error:", e.data)
+        }
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #111111;
+  --color-primary: #eaeaea;
+  --color-secondary: #888888;
+  --color-highlight: #ffffff;
+  --color-accent: #f0f0f0;
+  --color-player: #1a1a1a;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-primary antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Custom scrollbar for playlist */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary/50;
+}

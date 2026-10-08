@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <div id="fetcher" style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function onYouTubeIframeAPIReady() {
+      const player = new YT.Player('fetcher', {
+        playerVars: { listType: 'playlist', list: 'PLHtDawnEzFmA', controls: 0, autoplay: 1, mute: 1 },
+        events: {
+          onStateChange: (e) => {
+            if (e.data === YT.PlayerState.PLAYING) {
+              console.log("Fetcher IDs:", player.getPlaylist());
+              player.stopVideo();
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
